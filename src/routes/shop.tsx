@@ -2,9 +2,9 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Navbar } from "@/components/store/Navbar";
 import { Footer } from "@/components/store/Footer";
 import { ProductCard } from "@/components/store/ProductCard";
-import { products } from "@/lib/products";
+import { useAppStore } from "@/lib/store";
 
-const filters = ["All", "Makeup", "Parfums", "Sacs"] as const;
+const filters = ["All", "Makeup", "Parfums", "Sacs", "Soins"] as const;
 
 export const Route = createFileRoute("/shop")({
   component: Shop,
@@ -18,6 +18,7 @@ export const Route = createFileRoute("/shop")({
 function Shop() {
   const { filter } = Route.useSearch();
   const navigate = useNavigate({ from: Route.fullPath });
+  const products = useAppStore((state) => state.products);
   const list = filter === "All" ? products : products.filter((p) => p.category === filter);
   
   const setFilter = (newFilter: typeof filters[number]) => {

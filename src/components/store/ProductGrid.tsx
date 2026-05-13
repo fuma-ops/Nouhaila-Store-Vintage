@@ -1,4 +1,4 @@
-import { products } from "@/lib/products";
+import { useAppStore } from "@/lib/store";
 import { ProductCard } from "./ProductCard";
 import { Link } from "@tanstack/react-router";
 
@@ -11,6 +11,7 @@ export function ProductGrid({
   title?: string;
   showAll?: boolean;
 }) {
+  const products = useAppStore((state) => state.products);
   const list = limit ? products.slice(0, limit) : products;
   return (
     <section className="mx-auto max-w-7xl px-4 py-10 md:px-8 md:py-16">

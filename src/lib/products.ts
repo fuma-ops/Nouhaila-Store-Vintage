@@ -10,9 +10,10 @@ export type Product = {
   id: string;
   name: string;
   price: number;
-  category: "Makeup" | "Parfums" | "Sacs";
+  category: "Makeup" | "Parfums" | "Sacs" | "Soins";
   image: string;
   tag?: string;
+  stock?: number;
 };
 
 export const products: Product[] = [
@@ -52,4 +53,5 @@ export const categories = [
   { name: "Makeup", key: "Makeup" },
   { name: "Parfums", key: "Parfums" },
   { name: "Sacs", key: "Sacs" },
+  { name: "Soins", key: "Soins" },
 ] as const;

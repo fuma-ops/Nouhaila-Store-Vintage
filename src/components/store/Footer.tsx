@@ -1,4 +1,5 @@
 import { Instagram, Facebook, Music2 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 export function Footer() {
   return (
     <footer className="bg-foreground text-background">
@@ -25,6 +26,9 @@ export function Footer() {
             <li>Retours</li>
             <li>Contact</li>
             <li>FAQ</li>
+            <li>
+              <Link to="/admin" className="hover:text-coral transition-colors underline underline-offset-4">Admin Panel</Link>
+            </li>
           </ul>
         </div>
         <div>

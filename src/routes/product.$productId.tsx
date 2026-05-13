@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Navbar } from "@/components/store/Navbar";
 import { Footer } from "@/components/store/Footer";
-import { products } from "@/lib/products";
+import { useAppStore } from "@/lib/store";
 import { useCart } from "@/lib/cart-context";
 import { ChevronLeft, Heart, ShoppingBag } from "lucide-react";
 import { ProductGrid } from "@/components/store/ProductGrid";
@@ -9,6 +9,7 @@ import { ProductGrid } from "@/components/store/ProductGrid";
 export const Route = createFileRoute("/product/$productId")({
   component: ProductPage,
   loader: ({ params }) => {
+    const products = useAppStore.getState().products;
     const product = products.find((p) => p.id === params.productId);
     if (!product) {
       throw new Error("Product not found");
@@ -95,7 +96,7 @@ function ProductPage() {
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Paiement</span>
-                <span>À la livraison 💸</span>
+                <span>À la livraison ou virement</span>
               </div>
             </div>
           </div>
